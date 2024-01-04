@@ -36,9 +36,9 @@ T \\
 \end{matrix} \\
 \end{bmatrix}}{︸}}\mathbf{q}_{\mathbf{n}}\mathbf{,\ }with\ \mathbf{q}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{q}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
 
-where T = 0.1 is the duration of discrete time steps and $`\sigma_{q} = 0.05.\ \ \mathbf{q}_{n} \in R^{2}$can be interpreted as a 2-D random acceleration. The prior at time n = 0 is Gaussian, i.e.,
-$\mathbf{x}_{0}\sim N\left( \mathbf{\mu}_{0},\ \mathbf{\Sigma}_{0} \right)\ $with given mean $\mathbf{\mu}_{0}$ and covariance matrix
-$\mathbf{\Sigma}_{0}$. For $n \in \left\{ 1,\ldots,N \right\}.$, measurements are modeled by an additive-noise measurement model, i.e.,
+where T = 0.1 is the duration of discrete time steps and $`\sigma_{q} = 0.05.\ \ \mathbf{q}_{n} \in R^{2}`$ can be interpreted as a 2-D random acceleration. The prior at time n = 0 is Gaussian, i.e.,
+$`\mathbf{x}_{0}\sim N\left( \mathbf{\mu}_{0},\ \mathbf{\Sigma}_{0} \right)\ `$ with given mean $`\mathbf{\mu}_{0}`$ and covariance matrix
+$`\mathbf{\Sigma}_{0}`$. For $`n \in \left\{ 1,\ldots,N \right\}.`$, measurements are modeled by an additive-noise measurement model, i.e.,
 
 $` \mathbf{y}_{\mathbf{n}}\mathbf{=}\underset{\mathbf{H}}{\overset{\begin{bmatrix}
 \begin{matrix}
@@ -58,7 +58,7 @@ $` \mathbf{y}_{\mathbf{n}}\mathbf{=}\underset{\mathbf{H}}{\overset{\begin{bmatri
 \end{matrix} \\
 \end{bmatrix}}{︸}}\mathbf{x}_{\mathbf{n}}\mathbf{+}\mathbf{v}_{\mathbf{n}},\ with\ \mathbf{v}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{v}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
 
-Where $\sigma_{v} = 5$. We need to find the estimated track given the prior and the observations by implementing a Kalman Filter.
+Where $`\sigma_{v} = 5`$. We need to find the estimated track given the prior and the observations by implementing a Kalman Filter.
 
 For part 2, measurements are generated based on a range-bearing
 measurement model, i.e.,
@@ -71,7 +71,7 @@ With
 $` y_{n} = \left( y_{1,n}\ y_{2,n} \right)^{T},\ \left( h_{1}\left( x_{n} \right)\ h_{2}\left( x_{n} \right) \right)^{T},\ v_{n} = \left( v_{1,n}\ v_{2,n} \right)^{T},\ v_{n}\sim N\left( 0,diag\left( \sigma_{v_{1}}^{2},\ \sigma_{v_{2}}^{2} \right) \right) `$
 and known sensor location $` p = \left( p_{1}\ p_{2} \right)^{T} `$.
 Measurement noise standard deviations are given by
-$\sigma_{v_{1}} = 5\ and\ \sigma_{v_{2}} = 0.01\ .\ $ For this, we
+$`\sigma_{v_{1}} = 5\ and\ \sigma_{v_{2}} = 0.01\ .\ `$ For this, we
 need to estimate the track using the extended (EKF) and unscented
 (UKF) Kalman filter.
 
@@ -109,7 +109,7 @@ The observation model is linear, so these can be written as
 
 $` x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
 
-$$ y_{n} = Hx_{n} + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ $$
+$` y_{n} = Hx_{n} + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ `$
 
 So, $` {Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T}) `$
 
@@ -158,46 +158,46 @@ Similarly, if the measurement noise variance is too low, the filter trusts its m
 
 ## **Extended Kalman Filter**
 
-$$x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ $$
+$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
 
-$$y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ $$
+$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ `$
 
-So, $${Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})$$
+So, $`{Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})`$
 
 Now,
-$$ P\left( x_{n - 1} \middle| y_{1:n - 1} \right) = P\left( x_{-} \middle| y_{-} \right)\sim N(\mu_{x\_|y\_},\ \Sigma_{x\_ x\_|y\_})$$
+$` P\left( x_{n - 1} \middle| y_{1:n - 1} \right) = P\left( x_{-} \middle| y_{-} \right)\sim N(\mu_{x\_|y\_},\ \Sigma_{x\_ x\_|y\_})`$
 
-$$The\ observation\ model\ is\ no\ longer\ linear.\ We\ can\ linearize\ h(.)about\ \mu_{x|y\_}\ as,$$
+The observation model is no longer linear. We can linearize h(.) about $`\mu_{x|y\_}\`$ as,
 
-$$h\left( x_{n} \right) = h\left( \mu_{x|y_{-}} \right) + H_{n}(x_{n} - \mu_{x|y_{-}})$$
+$`h\left( x_{n} \right) = h\left( \mu_{x|y_{-}} \right) + H_{n}(x_{n} - \mu_{x|y_{-}})`$
 
-$$Where\ H_{n} = \left. \ \frac{dh\left( x_{n} \right)}{d\left( x_{n} \right)} \right|_{x_{n} = \mu_{x|y_{-}}}$$
+Where $` H_{n} = \left. \ \frac{dh\left( x_{n} \right)}{d\left( x_{n} \right)} \right|_{x_{n} = \mu_{x|y_{-}}}`$
 
-$$h\left( x_{n} \right) = \begin{bmatrix}
+$` h\left( x_{n} \right) = \begin{bmatrix}
 h_{1}\left( x_{n} \right) \\
 h_{2}\left( x_{n} \right) \\
-\end{bmatrix}$$
+\end{bmatrix}`$
 
-$$H_{n} = \begin{bmatrix}
+$`H_{n} = \begin{bmatrix}
 \left. \ \frac{dh_{1}\left( x_{n} \right)}{d\left( x_{n} \right)} \right|_{x_{n} = \mu_{x|y_{-}}} \\
 \left. \ \frac{dh_{2}\left( x_{n} \right)}{d\left( x_{n} \right)} \right|_{x_{n} = \mu_{x|y_{-}}} \\
-\end{bmatrix}$$
+\end{bmatrix}`$
 
-$$h_{1}\left( x_{n} \right) = \left\| {(x_{1,n}\ x_{1,n})}^{T} - \mathbf{P} \right\| = \sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}$$
+$`h_{1}\left( x_{n} \right) = \left\| {(x_{1,n}\ x_{1,n})}^{T} - \mathbf{P} \right\| = \sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}`$
 
-$$h_{2}\left( x_{n} \right) = atan2(x_{1,n} - p_{1},\ x_{2,n} - p_{2})$$
+$`h_{2}\left( x_{n} \right) = atan2(x_{1,n} - p_{1},\ x_{2,n} - p_{2})`$
 
-$$\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{1,n}} = \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}}$$
+$`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{1,n}} = \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}}`$
 
-$$\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{2,n}} = \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}}$$
+$`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{2,n}} = \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}}`$
 
-$$\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{1,n}} = \frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}$$
+$`\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{1,n}} = \frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}`$
 
-$$\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{2,n}} = - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}$$
+$`\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{2,n}} = - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}`$
 
-$$\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{4,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{4,n}} = 0$$
+$`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{4,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{4,n}} = 0`$
 
-$$H_{n} = \left\lbrack \begin{matrix}
+$` H_{n} = \left\lbrack \begin{matrix}
 \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
 \frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
 \end{matrix}\begin{matrix}
@@ -206,21 +206,21 @@ $$H_{n} = \left\lbrack \begin{matrix}
 \end{matrix}\begin{matrix}
 0 & 0 \\
 0 & 0 \\
-\end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}}$$
+\end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}} `$
 
 Prediction Step:
 
-$$\mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ $$
+$`\mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ `$
 
-$$\Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T}$$
+$`\Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T}`$
 
 Update Step:
 
-$$Kalman\ gain = K = \Sigma_{xx|y\_}{H_{n}}^{T}{({H_{n}\Sigma}_{xx|y\_}H_{n}^{T} + \Sigma_{v})}^{- 1}$$
+Kalman gain = K = $`\Sigma_{xx|y\_}{H_{n}}^{T}{({H_{n}\Sigma}_{xx|y\_}H_{n}^{T} + \Sigma_{v})}^{- 1}`$
 
-$$\mu_{x|y} = \mu_{x|y\_} + K(y - h(\mu_{x|y\_}))$$
+$`\mu_{x|y} = \mu_{x|y\_} + K(y - h(\mu_{x|y\_}))`$
 
-$$\Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_}$$
+$`\Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_}`$
 
 **RMSE= 0.6629**
 
@@ -228,61 +228,53 @@ $$\Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_}$$
 
 ## **Unscented Kalman Filter:**
 
-$$x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ $$
+$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
 
-$$y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ $$
+$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ `$
 
-So, $${Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})$$
+So, $`{Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})`$
 
 Now,
-$$P\left( x_{n - 1} \middle| y_{1:n - 1} \right) = P\left( x_{-} \middle| y_{-} \right)\sim N(\mu_{x\_|y\_},\ \Sigma_{x\_ x\_|y\_})$$
+$`P\left( x_{n - 1} \middle| y_{1:n - 1} \right) = P\left( x_{-} \middle| y_{-} \right)\sim N(\mu_{x\_|y\_},\ \Sigma_{x\_ x\_|y\_})`$
 
-For unscented Kalman Filter, instead of linearizing the h function, we
-capture the propagation of the statistical properties of state estimates
-through this nonlinear function. The algorithm first generates a set of
-state values called sigma points. These sigma points capture the mean
-and covariance of the state estimates. The algorithm uses each of the
-sigma points as an input to the state transition and measurement
-functions to get a new set of transformed state points. The mean and
-covariance of the transformed points is then used to obtain state
-estimates and state estimation error covariance.
+For unscented Kalman Filter, instead of linearizing the h function, we capture the propagation of the statistical properties of state estimates through this nonlinear function. The algorithm first generates a set of state values called sigma points. These sigma points capture the mean and covariance of the state estimates. The algorithm uses each of the sigma points as an input to the state transition and measurement functions to get a new set of transformed state points. The mean and covariance of the transformed points is then used to obtain state estimates and state estimation error covariance.
 
 For our problem, we estimate the
 $`P\left( x \middle| y_{-} \right)`$ distribution from the sigma points of
-the $P\left( x_{-} \middle| y_{-} \right)$ distribution.
+the $`P\left( x_{-} \middle| y_{-} \right)`$ distribution.
 
 Now if, $`x_{\_}^{(i)}`$ and $`{weights}_{\_}^{(i)}`$ are $i^{th}$ sigma point and weight respectively from the $`P\left( x\_ \middle| y_{-} \right)`$ distribution,
 
 Then, sigma points for the approximated
 $`P\left( x \middle| y_{-} \right)`$ distributions are,
 
-$$x^{(i)} = A*x_{\_}^{(i)}$$
+$`x^{(i)} = A*x_{\_}^{(i)}`$
 
 Prediction Step:
 
-$${\widetilde{\mu}}_{x|y\_} = SP\ approximation\ of\ \ \mu_{x|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}x^{(i)}$$
+$`{\widetilde{\mu}}_{x|y\_} = SP\ approximation\ of\ \ \mu_{x|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}x^{(i)}`$
 
-$${\widetilde{\Sigma}}_{xx|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(x}^{(i)} - \mu_{x|y\_})*{{(x}^{(i)} - \mu_{x|y\_})}^{T} + {W\Sigma}_{q}W^{T}$$
+$`{\widetilde{\Sigma}}_{xx|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(x}^{(i)} - \mu_{x|y\_})*{{(x}^{(i)} - \mu_{x|y\_})}^{T} + {W\Sigma}_{q}W^{T}`$
 
 Update Step:
 
 Sigma points of $`P\left( y \middle| y_{-} \right)\ `$ are calculated by,
 
-$$y^{(i)} = h(x^{(i)})$$
+$`y^{(i)} = h(x^{(i)})`$
 
-$${\widetilde{\mu}}_{y|y\_} = SP\ approximation\ of\ \ \mu_{y|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}y^{(i)}$$
+$`{\widetilde{\mu}}_{y|y\_} = SP\ approximation\ of\ \ \mu_{y|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}y^{(i)}`$
 
-$${\widetilde{\Sigma}}_{yy|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(y}^{(i)} - \mu_{y|y\_})*{{(y}^{(i)} - \mu_{y|y\_})}^{T} + \Sigma_{v}$$
+$`{\widetilde{\Sigma}}_{yy|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(y}^{(i)} - \mu_{y|y\_})*{{(y}^{(i)} - \mu_{y|y\_})}^{T} + \Sigma_{v}`$
 
-$${\widetilde{\Sigma}}_{xy|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(x}^{(i)} - \mu_{x|y\_})*{{(y}^{(i)} - \mu_{y|y\_})}^{T}$$
+$`{\widetilde{\Sigma}}_{xy|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \sum_{i}^{}{{weights}_{\_}^{(i)}*}{(x}^{(i)} - \mu_{x|y\_})*{{(y}^{(i)} - \mu_{y|y\_})}^{T}`$
 
 So,
 
-$$Kalman\ gain = K = {\widetilde{\Sigma}}_{xy|y\_}{\widetilde{\Sigma}}_{yy|y\_}$$
+Kalman gain = K = $`{\widetilde{\Sigma}}_{xy|y\_}{\widetilde{\Sigma}}_{yy|y\_}`$
 
-$${{\widetilde{\mu}}_{x|y} = SP\ approximation\ of\ \mu}_{x|y} = {\widetilde{\mu}}_{x|y\_} + K(y - {\widetilde{\mu}}_{y|y\_})$$
+$`{{\widetilde{\mu}}_{x|y} = SP\ approximation\ of\ \mu}_{x|y} = {\widetilde{\mu}}_{x|y\_} + K(y - {\widetilde{\mu}}_{y|y\_})`$
 
-$${\widetilde{\Sigma}}_{xx|y} = SP\ approximation\ of\ \Sigma_{xx|y} = {\widetilde{\Sigma}}_{xx|y\_} - K{{\widetilde{\Sigma}}_{xy|y\_}}^{T}$$
+$`{\widetilde{\Sigma}}_{xx|y} = SP\ approximation\ of\ \Sigma_{xx|y} = {\widetilde{\Sigma}}_{xx|y\_} - K{{\widetilde{\Sigma}}_{xy|y\_}}^{T}`$
 
 **RMSE= 0.6622**
 
