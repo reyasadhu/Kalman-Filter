@@ -4,11 +4,11 @@ This a state estimation with Kalman filter problem, which is part of the homewor
 
 Consider a sequence of states that consist of location and velocity, i.e.,
 
-$$ \mathbf{x}_{\mathbf{n}} = \left\{ x_{1,n},\ x_{2,n},{\dot{x}}_{1,n},\ {\dot{x}}_{2,n} \right\}^{T},\ \ n \in \left\{ 0,\ldots,N \right\}. $$
+$` \mathbf{x}_{\mathbf{n}} = \left\{ x_{1,n},\ x_{2,n},{\dot{x}}_{1,n},\ {\dot{x}}_{2,n} \right\}^{T},\ \ n \in \left\{ 0,\ldots,N \right\}. `$
 
 The state transition model of the mobile object is given by
 
-$$\mathbf{x}_{\mathbf{n}} = \underset{\mathbf{A}}{\overset{\begin{bmatrix}
+$` \mathbf{x}_{\mathbf{n}} = \underset{\mathbf{A}}{\overset{\begin{bmatrix}
 \begin{matrix}
 1 & 0 \\
 0 & 1 \\
@@ -34,13 +34,13 @@ T \\
 0 \\
 T \\
 \end{matrix} \\
-\end{bmatrix}}{︸}}\mathbf{q}_{\mathbf{n}}\mathbf{,\ }with\ \mathbf{q}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{q}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )}$$
+\end{bmatrix}}{︸}}\mathbf{q}_{\mathbf{n}}\mathbf{,\ }with\ \mathbf{q}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{q}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
 
 where T = 0.1 is the duration of discrete time steps and $`\sigma_{q} = 0.05.\ \ \mathbf{q}_{n} \in R^{2}$can be interpreted as a 2-D random acceleration. The prior at time n = 0 is Gaussian, i.e.,
 $\mathbf{x}_{0}\sim N\left( \mathbf{\mu}_{0},\ \mathbf{\Sigma}_{0} \right)\ $with given mean $\mathbf{\mu}_{0}$ and covariance matrix
 $\mathbf{\Sigma}_{0}$. For $n \in \left\{ 1,\ldots,N \right\}.$, measurements are modeled by an additive-noise measurement model, i.e.,
 
-$$\mathbf{y}_{\mathbf{n}}\mathbf{=}\underset{\mathbf{H}}{\overset{\begin{bmatrix}
+$` \mathbf{y}_{\mathbf{n}}\mathbf{=}\underset{\mathbf{H}}{\overset{\begin{bmatrix}
 \begin{matrix}
 1 \\
 0 \\
@@ -56,7 +56,7 @@ $$\mathbf{y}_{\mathbf{n}}\mathbf{=}\underset{\mathbf{H}}{\overset{\begin{bmatrix
 0 \\
 \end{matrix} \\
 \end{matrix} \\
-\end{bmatrix}}{︸}}\mathbf{x}_{\mathbf{n}}\mathbf{+}\mathbf{v}_{\mathbf{n}},\ with\ \mathbf{v}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{v}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )}$$
+\end{bmatrix}}{︸}}\mathbf{x}_{\mathbf{n}}\mathbf{+}\mathbf{v}_{\mathbf{n}},\ with\ \mathbf{v}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{v}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
 
 Where $\sigma_{v} = 5$. We need to find the estimated track given the prior and the observations by implementing a Kalman Filter.
 
@@ -68,8 +68,8 @@ $$y_{1,n} = \left\| \left( x_{1,n}\ x_{2,n} \right)^{T} - \mathbf{p} \right\| + 
 $$y_{2,n} = atan2\left( x_{1,n} - p_{1},\ x_{2,n} - p_{2} \right) + v_{2,n}\ (in\ radians)$$
 
 With
-$y_{n} = \left( y_{1,n}\ y_{2,n} \right)^{T},\ \left( h_{1}\left( x_{n} \right)\ h_{2}\left( x_{n} \right) \right)^{T},\ v_{n} = \left( v_{1,n}\ v_{2,n} \right)^{T},\ v_{n}\sim N\left( 0,diag\left( \sigma_{v_{1}}^{2},\ \sigma_{v_{2}}^{2} \right) \right)$
-and known sensor location $p = \left( p_{1}\ p_{2} \right)^{T}$.
+$` y_{n} = \left( y_{1,n}\ y_{2,n} \right)^{T},\ \left( h_{1}\left( x_{n} \right)\ h_{2}\left( x_{n} \right) \right)^{T},\ v_{n} = \left( v_{1,n}\ v_{2,n} \right)^{T},\ v_{n}\sim N\left( 0,diag\left( \sigma_{v_{1}}^{2},\ \sigma_{v_{2}}^{2} \right) \right) `$
+and known sensor location $` p = \left( p_{1}\ p_{2} \right)^{T} `$.
 Measurement noise standard deviations are given by
 $\sigma_{v_{1}} = 5\ and\ \sigma_{v_{2}} = 0.01\ .\ $ For this, we
 need to estimate the track using the extended (EKF) and unscented
@@ -107,27 +107,27 @@ is not the case. However, an important property of sequential LMMSE estimation a
 
 The observation model is linear, so these can be written as
 
-$$x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ $$
+$` x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
 
-$$y_{n} = Hx_{n} + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ $$
+$$ y_{n} = Hx_{n} + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ $$
 
-So, $${Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})$$
+So, $` {Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T}) `$
 
-Prediction Step:
+#### Prediction Step:
 
-$$\mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ $$
+$` \mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ `$
 
-$$\Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T})$$
+$` \Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T})`$
 
-Update Step:
+#### Update Step:
 
-$$Kalman\ gain = K = \Sigma_{xx|y\_}H^{T}{({H\Sigma}_{xx|y\_}H^{T} + \Sigma_{v})}^{- 1}$$
+Kalman gain = K = $` \Sigma_{xx|y\_}H^{T}{({H\Sigma}_{xx|y\_}H^{T} + \Sigma_{v})}^{- 1} `$
 
-$$Innovation\ Sequence = y - \mu_{y} = y - H\mu_{x|y\_}$$
+Innovation Sequence = $` y - \mu_{y} = y - H\mu_{x|y\_} `$
 
-$$\mu_{x|y} = \mu_{x|y\_} + K(y - H\mu_{x|y\_})$$
+$` \mu_{x|y} = \mu_{x|y\_} + K(y - H\mu_{x|y\_}) `$
 
-$$\Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_}$$
+$` \Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_} `$
 
 Error = 1.1348
 
