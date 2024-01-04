@@ -158,16 +158,16 @@ Similarly, if the measurement noise variance is too low, the filter trusts its m
 
 ## **Extended Kalman Filter**
 
-$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
+$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q}) `$
 
-$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ `$
+$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v}) `$
 
 So, $`{Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})`$
 
 Now,
 $` P\left( x_{n - 1} \middle| y_{1:n - 1} \right) = P\left( x_{-} \middle| y_{-} \right)\sim N(\mu_{x\_|y\_},\ \Sigma_{x\_ x\_|y\_})`$
 
-The observation model is no longer linear. We can linearize h(.) about $`\mu_{x|y\_}\`$ as,
+The observation model is no longer linear. We can linearize h(.) about $`\mu_{x|y\_}`$ as,
 
 $`h\left( x_{n} \right) = h\left( \mu_{x|y_{-}} \right) + H_{n}(x_{n} - \mu_{x|y_{-}})`$
 
@@ -200,17 +200,21 @@ $`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h
 $` H_{n} = \left\lbrack \begin{matrix}
 \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
 \frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
-\end{matrix}\begin{matrix}
+\end{matrix} `$
+
+$` \begin{matrix}
 \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
  - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
-\end{matrix}\begin{matrix}
+\end{matrix} `$
+
+$`\begin{matrix}
 0 & 0 \\
 0 & 0 \\
 \end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}} `$
 
 Prediction Step:
 
-$`\mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ `$
+$`\mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}`$ is the previous estimation. 
 
 $`\Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T}`$
 
@@ -228,9 +232,9 @@ $`\Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_}`$
 
 ## **Unscented Kalman Filter:**
 
-$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q})\ `$
+$`x_{n} = Ax_{n - 1} + {Wq}_{n}\ ,\ where\ q_{n}\sim N(0,\Sigma_{q}) `$
 
-$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v})\ `$
+$`y_{n} = h(x_{n}) + v_{n}\ ,\ where\ v_{n}\sim N(0,\Sigma_{v}) `$
 
 So, $`{Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T})`$
 
@@ -258,7 +262,7 @@ $`{\widetilde{\Sigma}}_{xx|y\_} = {SP\ approximation\ of\ \Sigma}_{xx|y\_} = \su
 
 Update Step:
 
-Sigma points of $`P\left( y \middle| y_{-} \right)\ `$ are calculated by,
+Sigma points of $`P\left( y \middle| y_{-} \right) `$ are calculated by,
 
 $`y^{(i)} = h(x^{(i)})`$
 
