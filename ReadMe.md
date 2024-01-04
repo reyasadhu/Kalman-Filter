@@ -198,7 +198,7 @@ $`\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{2,n}} = - \frac{x_{1,n} 
 $`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{4,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{4,n}} = 0`$
 
 
-![](images/equation.png)
+![](images/equation.jpg)
 
 
 Prediction Step:
