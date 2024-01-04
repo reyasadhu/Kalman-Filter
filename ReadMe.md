@@ -115,7 +115,7 @@ So, $` {Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T}) `$
 
 #### Prediction Step:
 
-$` \mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ `$
+$$ \mu_{x|y\_} = A\mu_{x\_|y\_}\ ,\ where\ \mu_{x\_|y\_}\ is\ the\ previous\ estimation.\ $$
 
 $` \Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T})`$
 
