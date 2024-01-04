@@ -4,7 +4,7 @@ This a state estimation with Kalman filter problem, which is part of the homewor
 
 Consider a sequence of states that consist of location and velocity, i.e.,
 
-$\mathbf{x}_{\mathbf{n}} = \left\{ x_{1,n},\ x_{2,n},{\dot{x}}_{1,n},\ {\dot{x}}_{2,n} \right\}^{T},\ \ n \in \left\{ 0,\ldots,N \right\}.$
+$$ \mathbf{x}_{\mathbf{n}} = \left\{ x_{1,n},\ x_{2,n},{\dot{x}}_{1,n},\ {\dot{x}}_{2,n} \right\}^{T},\ \ n \in \left\{ 0,\ldots,N \right\}. $$
 
 The state transition model of the mobile object is given by
 
@@ -133,7 +133,7 @@ Error = 1.1348
 
 | Innovation Sequence| True VS Estimated Track|
 :-------------------------:|:----------------------:
-![](/images/image1.jpg | width=250)|![](/images/image2.jpg)
+![](/images/image1.jpg)|![](/images/image2.jpg)
 
 
 The innovation sequence seems to have zero mean and uncorrelated with each other.
