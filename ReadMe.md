@@ -208,13 +208,17 @@ $$H_{n} = \left\lbrack \begin{matrix}
 0 & 0 \\
 \end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}}$$
 
-$$ H_{n} = \begin{bmatrix}
-\frac{x_{1,n} - p_{1}}{\sqrt{(x_{1,n} - p_{1})^2 + (x_{2,n} - p_{2})^2}} & \frac{x_{2,n} - p_{2}}{\sqrt{(x_{1,n} - p_{1})^2 + (x_{2,n} - p_{2})^2}} \\
-\frac{x_{2,n} - p_{2}}{\sqrt{(x_{1,n} - p_{1})^2 + (x_{2,n} - p_{2})^2}} & -\frac{x_{1,n} - p_{1}}{\sqrt{(x_{1,n} - p_{1})^2 + (x_{2,n} - p_{2})^2}} \\
-0 & 0 \\
-0 & 0 \\
-\end{bmatrix}_{x_{n} = \mu_{x|y_{-}}} $$
 
+```markdown
+H_{n} = \begin{bmatrix}
+    \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} & \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
+    \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} & - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
+    0 & 0 \\
+    0 & 0 \\
+\end{bmatrix}_{x_{n} = \mu_{x|y_{-}}}
+```
+
+This will render the matrix in a readable format in a GitHub README.
 
 Prediction Step:
 
