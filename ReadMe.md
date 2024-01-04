@@ -133,7 +133,7 @@ Error = 1.1348
 
 | Innovation Sequence| True VS Estimated Track|
 :-------------------------:|:----------------------:
-![](/images/image1.jpg = 250x250)|![](/images/image2.jpg)
+![](/images/image1.jpg | width=250)|![](/images/image2.jpg)
 
 
 The innovation sequence seems to have zero mean and uncorrelated with each other.
