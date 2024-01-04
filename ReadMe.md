@@ -107,15 +107,15 @@ is not the case. However, an important property of sequential LMMSE estimation a
 
 The observation model is linear, so these can be written as
 
-$` x_{n} = Ax_{n - 1} + {Wq}_{n}\ `$, where $`q_{n}\sim N(0,\Sigma_{q})\ `$
+$` x_{n} = Ax_{n - 1} + {Wq}_{n}`$, where $`q_{n}\sim N(0,\Sigma_{q})`$
 
-$` y_{n} = Hx_{n} + v_{n}\`$ , where $`v_{n}\sim N(0,\Sigma_{v})\ `$
+$` y_{n} = Hx_{n} + v_{n}`$ , where $`v_{n}\sim N(0,\Sigma_{v}) `$
 
 So, $` {Wq}_{n}\sim N(0,{W\Sigma}_{q}W^{T}) `$
 
 #### Prediction Step:
 
-$` \mu_{x|y\_} = A\mu_{x\_|y\_}\`$, where $`\mu_{x\_|y\_}`$  is the previous estimation. 
+$` \mu_{x|y\_} = A\mu_{x\_|y\_} `$, where $`\mu_{x\_|y\_} `$  is the previous estimation. 
 
 $` \Sigma_{xx|y\_} = A\Sigma_{x\_ x\_|y\_}A^{T} + {W\Sigma}_{q}W^{T})`$
 
