@@ -197,7 +197,7 @@ $`\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{2,n}} = - \frac{x_{1,n} 
 
 $`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{4,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{4,n}} = 0`$
 
-$` H_{n} = \left\lbrack \begin{matrix}
+$` H_{n} = \left \lbrack \begin{matrix}
 \frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
 \frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
 \end{matrix} `$
@@ -207,7 +207,7 @@ $` \begin{matrix}
  - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
 \end{matrix} `$
 
-$`\begin{matrix}
+$` \begin{matrix}
 0 & 0 \\
 0 & 0 \\
 \end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}} `$
