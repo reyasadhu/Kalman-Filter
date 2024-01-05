@@ -13,18 +13,12 @@ $` \mathbf{x}_{\mathbf{n}} = \underset{\pmb{A}}{\overset{\begin{bmatrix}
 0 & 1 & 0 & T\\
 0 & 0 & 1 & 0 \\
 0 & 0 & 0 & 1\\
-\end{bmatrix}}{︸}}\mathbf{x}_{\mathbf{n - 1}} + \ \underset{\mathbf{W}}{\overset{\begin{bmatrix}
+\end{bmatrix}}}\mathbf{x}_{\mathbf{n - 1}} + \underset{\mathbf{W}}{\overset{\begin{bmatrix}
 0.5T^{2} & 0 \\
-\begin{matrix}
-0 \\
-T \\
-0 \\
-\end{matrix} & \begin{matrix}
-0.5T^{2} \\
-0 \\
-T \\
-\end{matrix} \\
-\end{bmatrix}}{︸}}\mathbf{q}_{\mathbf{n}}\mathbf{,\ }with\ \mathbf{q}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{q}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
+0 & 0.5T^{2}\\
+T & 0\\
+0 & T\\
+\end{bmatrix}}}\mathbf{q}_{\mathbf{n}}\mathbf{,\ }with\ \mathbf{q}_{\mathbf{n}}\mathbf{\sim}N\mathbf{(0,}\sigma_{q}^{2}\mathbf{I}_{\mathbf{2}}\mathbf{\ )} `$
 
 where T = 0.1 is the duration of discrete time steps and $`\sigma_{q} = 0.05.\ \ \mathbf{q}_{n} \in R^{2}`$ can be interpreted as a 2-D random acceleration. The prior at time n = 0 is Gaussian, i.e.,
 $`\mathbf{x}_{0}\sim N\left( \mathbf{\mu}_{0},\ \mathbf{\Sigma}_{0} \right)\ `$ with given mean $`\mathbf{\mu}_{0}`$ and covariance matrix
