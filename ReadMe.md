@@ -8,21 +8,11 @@ $` \mathbf{x}_{\mathbf{n}} = \left\{ x_{1,n},\ x_{2,n},{\dot{x}}_{1,n},\ {\dot{x
 
 The state transition model of the mobile object is given by
 
-$` \mathbf{x}_{\mathbf{n}} = \underset{\mathbf{A}}{\overset{\begin{bmatrix}
-\begin{matrix}
-1 & 0 \\
-0 & 1 \\
-\end{matrix} & \begin{matrix}
-T & 0 \\
-0 & T \\
-\end{matrix} \\
-\begin{matrix}
-0 & 0 \\
-0 & 0 \\
-\end{matrix} & \begin{matrix}
-1 & 0 \\
-0 & 1 \\
-\end{matrix} \\
+$` \mathbf{x}_{\mathbf{n}} = \underset{\pmb{A}}{\overset{\begin{bmatrix}
+1 & 0 & T & 0\\
+0 & 1 & 0 & T\\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1\\
 \end{bmatrix}}{︸}}\mathbf{x}_{\mathbf{n - 1}} + \ \underset{\mathbf{W}}{\overset{\begin{bmatrix}
 0.5T^{2} & 0 \\
 \begin{matrix}
