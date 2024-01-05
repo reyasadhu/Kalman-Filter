@@ -103,7 +103,7 @@ $` \Sigma_{xx|y} = \Sigma_{xx|y\_} - KH\Sigma_{xx|y\_} `$
 Error = 1.1348
 
 | Innovation Sequence| True VS Estimated Track|
-:-------------------------:|:----------------------:
+:-------------------------:|:------------------------:
 ![](/images/image1.jpg)|![](/images/image2.jpg)
 
 
@@ -114,13 +114,13 @@ Now, if we introduce model mismatch, i.e we estimate the driving noise or measur
 If we take a very low value of variance in driving noise, the estimated track becomes a perfect straight line with almost no deviation from the path. Because, in this case the filter trusts its prediction too much, thus does not account for the sudden change in system dynamics. So, in case of a change, it is very slow to adapt the changes. Whereas, for a high value of variance, the filter doesn't trust his prediction and rely on the measurements. Thus the path becomes too noisy. 
 
 | High process noise variance, noisy path|Low Process Noise variance, smooth path, not converging|
-:------------------:|:-------------------------:
+:-------------------------:|:-------------------------:
 ![](/images/image3.jpg) | ![](/images/image4.jpg)
 
 Similarly, if the measurement noise variance is too low, the filter trusts its measurement too much and tends to overfit the measurements. Whereas, in case of high variance, it trusts its prediction more thus slow to adapt changes in the actual system dynamics.
 
 | High Measurement variance, slow to adapt changes|  Low Measurement variance, overfitting measurements |
-:------------------:|:-------------------------:
+:------------------------:|:-------------------------:
 ![](/images/image5.jpg) | ![](/images/image6.jpg)
 
 
@@ -166,16 +166,10 @@ $`\frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{2,n}} = - \frac{x_{1,n} 
 
 $`\frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{1}\left( x_{n} \right)}{\partial x_{4,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{3,n}} = \frac{\partial h_{2}\left( x_{n} \right)}{\partial x_{4,n}} = 0`$
 
-$` H_{n} = \left\lbrack \begin{matrix}
-\frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
-\frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
-\end{matrix}\begin{matrix}
-\frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} \\
- - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} \\
-\end{matrix}\begin{matrix}
-0 & 0 \\
-0 & 0 \\
-\end{matrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}} `$
+$` H_{n} = \left\lbrack \begin{bmatrix}
+\frac{x_{1,n} - p_{1}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} & \frac{x_{2,n} - p_{2}}{\sqrt{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}}} & 0 & 0\\
+\frac{x_{2,n} - p_{2}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} & - \frac{x_{1,n} - p_{1}}{\left( x_{1,n} - p_{1} \right)^{2} + \left( x_{2,n} - p_{2} \right)^{2}} & 0 & 0\\
+\end{bmatrix} \right\rbrack_{x_{n} = \mu_{x|y_{-}}} `$
 
 ![](images/equation.jpg)
 
