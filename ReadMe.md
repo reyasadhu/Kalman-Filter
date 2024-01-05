@@ -115,14 +115,14 @@ If we take a very low value of variance in driving noise, the estimated track be
 
 | High process noise variance, noisy path|Low Process Noise variance, smooth path, not converging|
 :------------------:|:-------------------------:
-![](/images/image3.jpg)
+![](/images/image3.jpg) |
 ![](/images/image4.jpg)
 
 Similarly, if the measurement noise variance is too low, the filter trusts its measurement too much and tends to overfit the measurements. Whereas, in case of high variance, it trusts its prediction more thus slow to adapt changes in the actual system dynamics.
 
 | High Measurement variance, slow to adapt changes|  Low Measurement variance, overfitting measurements |
 :------------------:|:-------------------------:
-![](/images/image5.jpg)
+![](/images/image5.jpg) |
 ![](/images/image6.jpg)
 
 
